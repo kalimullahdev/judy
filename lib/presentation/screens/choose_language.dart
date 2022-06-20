@@ -62,98 +62,118 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey,
-      body: GestureDetector(
-        onTap: () => Nav.push(context, const ChooseInterestScreen()),
-        child: Center(
-          child: SafeArea(
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 230,
-                  child: Column(
-                    children: const [
-                      SizedBox(height: 20),
-                      CircleAvatar(
-                        backgroundColor: Colors.black26,
-                        minRadius: 40,
-                        maxRadius: 40,
+      body: Center(
+        child: SafeArea(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 230,
+                child: Column(
+                  children: const [
+                    SizedBox(height: 20),
+                    CircleAvatar(
+                      backgroundColor: Colors.black26,
+                      minRadius: 40,
+                      maxRadius: 40,
+                    ),
+                    SizedBox(height: 8),
+                    Text(
+                      "Hi, Natalie",
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
                       ),
-                      SizedBox(height: 8),
-                      Text(
-                        "Hi, Natalie",
+                    ),
+                    SizedBox(height: 8),
+                    SizedBox(
+                      width: 200,
+                      child: Text(
+                        "Please select your preferred language to facilitate communication",
+                        textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
+                          color: Color(0xff666666),
+                          // fontSize: 1,
+                          // fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 8),
-                      SizedBox(
-                        width: 200,
-                        child: Text(
-                          "Please select your preferred language to facilitate communication",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            color: Color(0xff666666),
-                            // fontSize: 1,
-                            // fontWeight: FontWeight.bold,
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: Dimensions.PADDING_SIZE_EXTRA_LARGE,
+                  ),
+                  decoration: const BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black26,
+                        offset: Offset(0, 4),
+                        blurRadius: 20.0,
+                      )
+                    ],
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40),
+                    ),
+                  ),
+                  // height: Dimensions.getScreenSize(context).height * .65,
+                  width: Dimensions.getScreenSize(context).width,
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 50),
+                      Wrap(
+                        children: List<Widget>.generate(
+                          Language.values.toList().length,
+                          (int idx) {
+                            return GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  _currentLanguage = Language.values[idx];
+                                });
+                              },
+                              child: ChoiceWidget(
+                                text: Language.values[idx].name,
+                                iconUncheckedColor: ColorResources.blackColor,
+                                iconUncheck: Icons.radio_button_unchecked,
+                                iconColor: Colors.white,
+                                isChecked:
+                                    _currentLanguage == Language.values[idx],
+                              ),
+                            );
+                          },
+                        ).toList(),
+                      ),
+                      const SizedBox(
+                        height: Dimensions.PADDING_SIZE_EXTRA_LARGE,
+                      ),
+                      const SizedBox(
+                        height: Dimensions.PADDING_SIZE_EXTRA_LARGE,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              Nav.pop(context);
+                            },
+                            child: const Text("Back"),
                           ),
-                        ),
+                          ElevatedButton(
+                            onPressed: () {
+                              Nav.push(context, const ChooseInterestScreen());
+                            },
+                            child: const Text("Next"),
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ),
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: Dimensions.PADDING_SIZE_EXTRA_LARGE,
-                    ),
-                    decoration: const BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black26,
-                          offset: Offset(0, 4),
-                          blurRadius: 20.0,
-                        )
-                      ],
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(40),
-                        topRight: Radius.circular(40),
-                      ),
-                    ),
-                    // height: Dimensions.getScreenSize(context).height * .65,
-                    width: Dimensions.getScreenSize(context).width,
-                    child: Column(
-                      children: [
-                        const SizedBox(height: 50),
-                        Wrap(
-                          children: List<Widget>.generate(
-                            Language.values.toList().length,
-                            (int idx) {
-                              return GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    _currentLanguage = Language.values[idx];
-                                  });
-                                },
-                                child: ChoiceWidget(
-                                  text: Language.values[idx].name,
-                                  iconUncheckedColor: ColorResources.blackColor,
-                                  iconUncheck: Icons.radio_button_unchecked,
-                                  iconColor: Colors.white,
-                                  isChecked:
-                                      _currentLanguage == Language.values[idx],
-                                ),
-                              );
-                            },
-                          ).toList(),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

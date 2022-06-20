@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:judy_flutter_ui/presentation/base/choice_widget.dart';
+import 'package:judy_flutter_ui/presentation/screens/choose_course.dart';
 import 'package:judy_flutter_ui/utill/color_resources.dart';
 import 'package:judy_flutter_ui/utill/dimensions.dart';
+import 'package:judy_flutter_ui/utill/nav.dart';
 
 // final List<bool> insterestList = [];
 Map<String, bool> interestMap = <String, bool>{
@@ -113,75 +115,95 @@ class _ChooseInterestScreenState extends State<ChooseInterestScreen> {
           ),
         ),
       ),
-      body: GestureDetector(
-        // onTap: () => Nav.push(context, const ChooseCourse()),
-        child: Center(
-          child: ListView(
-            padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_EXTRA_LARGE),
-            children: [
-              RichText(
-                text: const TextSpan(
-                  style: TextStyle(
-                    fontSize: Dimensions.FONT_SIZE_OVER_TOO_LARGE,
-                    color: Colors.white,
-                  ),
-                  children: <TextSpan>[
-                    TextSpan(text: 'Pick your'),
-                    TextSpan(
-                        text: '\ninterests',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: ColorResources.blueColor,
-                        )),
-                  ],
+      body: Center(
+        child: ListView(
+          padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_EXTRA_LARGE),
+          children: [
+            RichText(
+              text: const TextSpan(
+                style: TextStyle(
+                  fontSize: Dimensions.FONT_SIZE_OVER_TOO_LARGE,
+                  color: Colors.white,
+                ),
+                children: <TextSpan>[
+                  TextSpan(text: 'Pick your'),
+                  TextSpan(
+                      text: '\ninterests',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: ColorResources.blueColor,
+                      )),
+                ],
+              ),
+            ),
+            const SizedBox(height: 30),
+            const Text(
+              "12 interests selected ",
+              style: TextStyle(color: Color(0xff5A537B)),
+            ),
+            const SizedBox(height: 8),
+            Wrap(
+              children: List<Widget>.generate(
+                interestMap.values.toList().length,
+                (int idx) {
+                  final listKey = interestMap.keys.toList()[idx];
+                  final listValue = interestMap.values.toList()[idx];
+                  final gradientIndex = idx >= gradientList.length
+                      ? idx % gradientList.length
+                      : idx;
+
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        interestMap[interestMap.keys.toList()[idx]] =
+                            !interestMap.values.toList()[idx];
+                      });
+                    },
+                    child: ChoiceWidget(
+                      text: interestMap.keys.toList()[idx],
+                      textColor: Colors.white,
+                      linearGradient: gradientList[gradientIndex],
+
+                      isChecked: interestMap.values.toList()[idx],
+                      // isChecked: true,
+                    ),
+                  );
+                },
+              ).toList(),
+            ),
+            const SizedBox(height: 12),
+            const Center(
+              child: Text(
+                "Add interest",
+                style: TextStyle(
+                  color: ColorResources.blueColor,
                 ),
               ),
-              const SizedBox(height: 30),
-              const Text(
-                "12 interests selected ",
-                style: TextStyle(color: Color(0xff5A537B)),
-              ),
-              const SizedBox(height: 8),
-              Wrap(
-                children: List<Widget>.generate(
-                  interestMap.values.toList().length,
-                  (int idx) {
-                    final listKey = interestMap.keys.toList()[idx];
-                    final listValue = interestMap.values.toList()[idx];
-                    final gradientIndex = idx >= gradientList.length
-                        ? idx % gradientList.length
-                        : idx;
-
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          interestMap[interestMap.keys.toList()[idx]] =
-                              !interestMap.values.toList()[idx];
-                        });
-                      },
-                      child: ChoiceWidget(
-                        text: interestMap.keys.toList()[idx],
-                        textColor: Colors.white,
-                        linearGradient: gradientList[gradientIndex],
-
-                        isChecked: interestMap.values.toList()[idx],
-                        // isChecked: true,
-                      ),
-                    );
+            ),
+            const SizedBox(
+              height: Dimensions.PADDING_SIZE_EXTRA_LARGE,
+            ),
+            const SizedBox(
+              height: Dimensions.PADDING_SIZE_EXTRA_LARGE,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Nav.pop(context);
                   },
-                ).toList(),
-              ),
-              const SizedBox(height: 12),
-              const Center(
-                child: Text(
-                  "Add interest",
-                  style: TextStyle(
-                    color: ColorResources.blueColor,
-                  ),
+                  child: const Text("Back"),
                 ),
-              ),
-            ],
-          ),
+                ElevatedButton(
+                  onPressed: () {
+                    Nav.push(context, const ChooseCourse());
+                  },
+                  child: const Text("Next"),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
