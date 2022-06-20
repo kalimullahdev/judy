@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:judy_flutter_ui/presentation/base/choice_widget.dart';
 import 'package:judy_flutter_ui/presentation/screens/choose_interest.dart';
+import 'package:judy_flutter_ui/utill/color_resources.dart';
 import 'package:judy_flutter_ui/utill/dimensions.dart';
 import 'package:judy_flutter_ui/utill/nav.dart';
 
@@ -125,50 +126,27 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                     child: Column(
                       children: [
                         const SizedBox(height: 50),
-                        Row(
-                          // mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ChoiceWidget(
-                              text: Language.values[0].name,
-                              // isChecked: true,
-                            ),
-                            const SizedBox(width: 8),
-                            ChoiceWidget(
-                              text: Language.values[1].name,
-                              isChecked: true,
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 16),
-                        Row(
-                          children: [
-                            ChoiceWidget(
-                              text: Language.values[3].name,
-                              // isChecked: true,
-                            ),
-                            const SizedBox(width: 8),
-                            ChoiceWidget(
-                              text: Language.values[4].name,
-                            ),
-                            const SizedBox(width: 8),
-                            ChoiceWidget(
-                              text: Language.values[5].name,
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 16),
-                        Row(
-                          children: [
-                            ChoiceWidget(
-                              text: Language.values[6].name,
-                              // isChecked: true,
-                            ),
-                            const SizedBox(width: 8),
-                            ChoiceWidget(
-                              text: Language.values[1].name,
-                            ),
-                            const SizedBox(width: 8),
-                          ],
+                        Wrap(
+                          children: List<Widget>.generate(
+                            Language.values.toList().length,
+                            (int idx) {
+                              return GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    _currentLanguage = Language.values[idx];
+                                  });
+                                },
+                                child: ChoiceWidget(
+                                  text: Language.values[idx].name,
+                                  iconUncheckedColor: ColorResources.blackColor,
+                                  iconUncheck: Icons.radio_button_unchecked,
+                                  iconColor: Colors.white,
+                                  isChecked:
+                                      _currentLanguage == Language.values[idx],
+                                ),
+                              );
+                            },
+                          ).toList(),
                         ),
                       ],
                     ),

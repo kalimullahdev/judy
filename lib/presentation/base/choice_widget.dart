@@ -16,6 +16,8 @@ class ChoiceWidget extends StatelessWidget {
   final LinearGradient? linearGradient;
   final Color? textColor;
   final Color? iconColor;
+  final Color? iconUncheckedColor;
+  final IconData? iconUncheck;
   final bool showCheckAtTrailing;
   const ChoiceWidget({
     Key? key,
@@ -24,6 +26,8 @@ class ChoiceWidget extends StatelessWidget {
     this.linearGradient,
     this.textColor,
     this.showCheckAtTrailing = false,
+    this.iconUncheckedColor,
+    this.iconUncheck,
     this.iconColor,
   }) : super(key: key);
 
@@ -83,9 +87,9 @@ class ChoiceWidget extends StatelessWidget {
                           size: 10,
                         ))
                     : Icon(
-                        Icons.radio_button_unchecked,
+                        iconUncheck ?? Icons.radio_button_unchecked,
                         size: 18,
-                        color: iconColor ?? Colors.white,
+                        color: iconUncheckedColor ?? Colors.white,
                       ),
               ],
             )
@@ -110,9 +114,9 @@ class ChoiceWidget extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Icon(
-                          Icons.close,
+                          iconUncheck ?? Icons.close,
                           size: 18,
-                          color: iconColor ?? Colors.white,
+                          color: iconUncheckedColor ?? Colors.white,
                         ),
                       ),
                 const SizedBox(width: 8),
