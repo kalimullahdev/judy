@@ -1,4 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:judy_flutter_ui/utill/color_resources.dart';
+
+Size _textSize(String text, TextStyle style) {
+  final TextPainter textPainter = TextPainter(
+      text: TextSpan(text: text, style: style),
+      maxLines: 1,
+      textDirection: TextDirection.ltr)
+    ..layout(minWidth: 0, maxWidth: double.infinity);
+  return textPainter.size;
+}
 
 class ChoiceWidget extends StatelessWidget {
   final String text;
@@ -7,8 +17,6 @@ class ChoiceWidget extends StatelessWidget {
   final Color? textColor;
   final Color? iconColor;
   final bool showCheckAtTrailing;
-  final void Function()? onSelected;
-
   const ChoiceWidget({
     Key? key,
     required this.text,
@@ -17,13 +25,20 @@ class ChoiceWidget extends StatelessWidget {
     this.textColor,
     this.showCheckAtTrailing = false,
     this.iconColor,
-    this.onSelected,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
+      width: _textSize(
+            text,
+            TextStyle(
+              color: textColor ?? Colors.black,
+              fontWeight:
+                  textColor != null ? FontWeight.bold : FontWeight.normal,
+            ),
+          ).width +
+          40,
       height: 40,
       margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(
@@ -47,6 +62,7 @@ class ChoiceWidget extends StatelessWidget {
       child: showCheckAtTrailing
           ? Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                   "${text[0].toUpperCase()}${text.substring(1)}",
@@ -61,21 +77,15 @@ class ChoiceWidget extends StatelessWidget {
                     ? CircleAvatar(
                         backgroundColor: textColor ?? Colors.green,
                         radius: 8,
-                        child: IconButton(
-                          padding: EdgeInsets.zero,
-                          icon: Icon(
-                            Icons.check,
-                            color: iconColor ?? Colors.white,
-                            size: 10,
-                          ),
+                        child: Icon(
+                          Icons.check,
                           color: iconColor ?? Colors.white,
-                          onPressed: onSelected ?? () {},
-                        ),
-                      )
+                          size: 10,
+                        ))
                     : Icon(
                         Icons.radio_button_unchecked,
                         size: 18,
-                        color: iconColor ?? Colors.black,
+                        color: iconColor ?? Colors.white,
                       ),
               ],
             )
@@ -86,21 +96,24 @@ class ChoiceWidget extends StatelessWidget {
                     ? CircleAvatar(
                         backgroundColor: textColor ?? Colors.green,
                         radius: 8,
-                        child: IconButton(
-                          padding: EdgeInsets.zero,
-                          icon: Icon(
-                            Icons.check,
-                            color: iconColor ?? Colors.white,
-                            size: 10,
-                          ),
-                          color: iconColor ?? Colors.white,
-                          onPressed: () {},
+                        child: Icon(
+                          Icons.check,
+                          color: iconColor ?? Colors.black,
+                          size: 10,
                         ),
                       )
-                    : Icon(
-                        Icons.radio_button_unchecked,
-                        size: 18,
-                        color: iconColor ?? Colors.black,
+                    : DecoratedBox(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: ColorResources.whiteColor,
+                          ),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Icon(
+                          Icons.close,
+                          size: 18,
+                          color: iconColor ?? Colors.white,
+                        ),
                       ),
                 const SizedBox(width: 8),
                 Text(
