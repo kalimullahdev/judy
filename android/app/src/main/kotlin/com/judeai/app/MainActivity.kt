@@ -1,4 +1,4 @@
-package com.kalimse.judy_flutter_ui
+package com.judeai.app
 
 import io.flutter.embedding.android.FlutterActivity
 
