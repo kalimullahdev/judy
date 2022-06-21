@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:judy_flutter_ui/presentation/base/choice_widget.dart';
+import 'package:judy_flutter_ui/presentation/base/custom_rounded_button.dart';
 import 'package:judy_flutter_ui/presentation/screens/choose_interest.dart';
 import 'package:judy_flutter_ui/utill/color_resources.dart';
 import 'package:judy_flutter_ui/utill/dimensions.dart';
@@ -155,17 +156,17 @@ class _ChooseLanguageState extends State<ChooseLanguage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          ElevatedButton(
-                            onPressed: () {
+                          CustomRoundedButton(
+                            onpressed: () {
                               Nav.pop(context);
                             },
-                            child: const Text("Back"),
+                            buttonText: "Back",
                           ),
-                          ElevatedButton(
-                            onPressed: () {
+                          CustomRoundedButton(
+                            onpressed: () {
                               Nav.push(context, const ChooseInterestScreen());
                             },
-                            child: const Text("Next"),
+                            buttonText: "Next",
                           ),
                         ],
                       ),

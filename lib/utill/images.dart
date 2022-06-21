@@ -15,6 +15,7 @@ class Svgs {
   static const String dialogicon4 = 'assets/svg/dialogicon4.svg';
   static const String dialogiconbutton = 'assets/svg/dialogiconbutton.svg';
   static const String crossIcon = 'assets/svg/cross_icon.svg';
+  static const String moreMenu = 'assets/svg/more_menu.svg';
 }
 
-// profile.png Images.flightPayment. googlemaps
+// profile.png Images.flightPayment. googlemaps.     more_menu

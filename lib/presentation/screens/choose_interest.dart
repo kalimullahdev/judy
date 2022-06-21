@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:judy_flutter_ui/presentation/base/choice_widget.dart';
+import 'package:judy_flutter_ui/presentation/base/custom_rounded_button.dart';
 import 'package:judy_flutter_ui/presentation/screens/choose_course.dart';
 import 'package:judy_flutter_ui/utill/color_resources.dart';
 import 'package:judy_flutter_ui/utill/dimensions.dart';
@@ -189,17 +190,17 @@ class _ChooseInterestScreenState extends State<ChooseInterestScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
-                  onPressed: () {
+                CustomRoundedButton(
+                  onpressed: () {
                     Nav.pop(context);
                   },
-                  child: const Text("Back"),
+                  buttonText: "Back",
                 ),
-                ElevatedButton(
-                  onPressed: () {
+                CustomRoundedButton(
+                  onpressed: () {
                     Nav.push(context, const ChooseCourse());
                   },
-                  child: const Text("Next"),
+                  buttonText: "Next",
                 ),
               ],
             ),
