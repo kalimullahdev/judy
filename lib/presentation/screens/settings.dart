@@ -1,8 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  bool newsButtonOn = true;
+  bool textMessagesButtonOn = false;
+  bool phoneCallsButtonOn = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,6 +59,7 @@ class SettingsScreen extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             ListTile(
+              onTap: () {},
               leading: Container(
                 decoration: const BoxDecoration(
                   color: Color(0xff7C42FF),
@@ -72,6 +83,7 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
             ListTile(
+              onTap: () {},
               leading: Container(
                 decoration: const BoxDecoration(
                   color: Color(0xff7C42FF),
@@ -95,6 +107,7 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
             ListTile(
+              onTap: () {},
               leading: Container(
                 decoration: const BoxDecoration(
                   color: Color(0xff7C42FF),
@@ -118,6 +131,7 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
             ListTile(
+              onTap: () {},
               leading: Container(
                 decoration: const BoxDecoration(
                   color: Color(0xff7C42FF),
@@ -153,8 +167,12 @@ class SettingsScreen extends StatelessWidget {
                 "Newsletter",
               ),
               trailing: CupertinoSwitch(
-                value: true,
-                onChanged: (bool value) {},
+                value: newsButtonOn,
+                onChanged: (bool value) {
+                  setState(() {
+                    newsButtonOn = value;
+                  });
+                },
               ),
             ),
             ListTile(
@@ -162,8 +180,12 @@ class SettingsScreen extends StatelessWidget {
                 "Text Messages",
               ),
               trailing: CupertinoSwitch(
-                value: false,
-                onChanged: (bool value) {},
+                value: textMessagesButtonOn,
+                onChanged: (bool value) {
+                  setState(() {
+                    textMessagesButtonOn = value;
+                  });
+                },
               ),
             ),
             ListTile(
@@ -171,11 +193,16 @@ class SettingsScreen extends StatelessWidget {
                 "Phone Calls",
               ),
               trailing: CupertinoSwitch(
-                value: false,
-                onChanged: (bool value) {},
+                value: phoneCallsButtonOn,
+                onChanged: (bool value) {
+                  setState(() {
+                    phoneCallsButtonOn = value;
+                  });
+                },
               ),
             ),
             ListTile(
+              onTap: () {},
               title: const Text(
                 "Currency",
               ),
@@ -196,6 +223,7 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
             ListTile(
+              onTap: () {},
               title: const Text(
                 "Languages",
               ),
@@ -216,6 +244,7 @@ class SettingsScreen extends StatelessWidget {
               ),
             ),
             ListTile(
+              onTap: () {},
               title: const Text(
                 "Linked Accounts",
               ),
