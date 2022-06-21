@@ -6,6 +6,9 @@ ThemeData lightTheme = ThemeData(
   // fontFamily: 'Rubik',
   primaryColor: ColorResources.colorPrimary,
   brightness: Brightness.light,
+  textSelectionTheme: const TextSelectionThemeData(
+    selectionHandleColor: ColorResources.whiteColor,
+  ),
   cardColor: Colors.white,
   focusColor: ColorResources.focusColor,
   hintColor: ColorResources.hintColor,
