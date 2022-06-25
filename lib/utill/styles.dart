@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:judy_flutter_ui/utill/color_resources.dart';
 import 'package:judy_flutter_ui/utill/dimensions.dart';
 
 const defaultRegular = TextStyle(
@@ -23,3 +24,28 @@ const defaultRegularLarge = TextStyle(
   fontSize: Dimensions.FONT_SIZE_LARGE,
   fontWeight: FontWeight.w700,
 );
+
+class Styles {
+  static final List<BoxShadow> boxShadow = [
+    BoxShadow(
+      color: Colors.black.withOpacity(0.17),
+      spreadRadius: 1,
+      blurRadius: 7,
+      offset: const Offset(0, 3), // changes position of shadow
+    ),
+  ];
+
+  static const BoxDecoration boxDecoration = BoxDecoration(
+    color: ColorResources.whiteColor,
+    borderRadius: BorderRadius.all(
+      Radius.circular(12),
+    ),
+  );
+  static final BoxDecoration boxDecorationWithShadow = BoxDecoration(
+    color: ColorResources.whiteColor,
+    boxShadow: Styles.boxShadow,
+    borderRadius: const BorderRadius.all(
+      Radius.circular(12),
+    ),
+  );
+}

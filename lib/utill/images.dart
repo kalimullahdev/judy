@@ -5,9 +5,17 @@ class Images {
   static const String flightPayment = "assets/images/flight_payment.png";
   static const String judytext = "assets/images/Judytext.png";
   static const String googleMaps = "assets/images/googlemaps.png";
+  static const String heart = "assets/images/heart.png";
+  static const String timetravel = "assets/images/timetravel.png";
+  // static const String googleMaps = "assets/images/googlemaps.png";
+
 }
 
 class Svgs {
+  // static const String dialogicon1 = 'assets/svg/dialogicon1.svg';
+  // static const String dialogicon1 = 'assets/svg/dialogicon1.svg';
+  // static const String dialogicon1 = 'assets/svg/dialogicon1.svg';
+  static const String mydata = 'assets/svg/mydata.svg';
   static const String dialogicon1 = 'assets/svg/dialogicon1.svg';
   static const String dialogicon2 = 'assets/svg/dialogicon2.svg';
   static const String dialogicon3 = 'assets/svg/dialogicon3.svg';

@@ -97,6 +97,7 @@ class HomeScreen extends StatelessWidget {
                 onpressed: () => newDeviceQrCodeSheet(context),
                 width: 200,
               ),
+
               CustomRoundedButton(
                 buttonText: "Add new Member",
                 onpressed: () => newMemberQrCodeSheet(context),
@@ -734,8 +735,6 @@ class DialogCustomRoundedButton extends StatelessWidget {
     );
   }
 }
-
-
 
 //  Container(
 //                   height: 100.0,

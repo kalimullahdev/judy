@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:judy_flutter_ui/presentation/screens/categories.dart';
 import 'package:judy_flutter_ui/presentation/screens/dashboard_screen2.dart';
 import 'package:judy_flutter_ui/presentation/screens/home_screen1.dart';
+import 'package:judy_flutter_ui/presentation/screens/messanger_screen.dart';
 import 'package:judy_flutter_ui/utill/color_resources.dart';
 import 'package:judy_flutter_ui/utill/dimensions.dart';
 import 'package:judy_flutter_ui/utill/images.dart';
@@ -46,6 +47,71 @@ class _DialogMessangerScreenState extends State<DialogMessangerScreen> {
       ),
       body: Stack(
         children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 50),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Image.asset(
+                    Images.logo,
+                    width: 100,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SingleChatLtRWidget(
+                        padding: 0,
+                        textColor: ColorResources.blackColor,
+                        messageText: "Hi , how can i help?",
+                        chatCardGradient: ColorResources.whiteLinearGradient,
+                      ),
+                      const SizedBox(
+                          height: Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                      SingleChatLtRWidget(
+                        padding: 0,
+                        textColor: ColorResources.blackColor,
+                        messageText: "You want to explore your home?",
+                        chatCardGradient: ColorResources.whiteLinearGradient,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT),
+              SingleChatLtRWidget(
+                showProfile: true,
+                padding: 0,
+                messageText:
+                    "Hi Mira, what about the color combination I made yesterday, do you think it's still not right?",
+                chatCardGradient: ColorResources.blueLinearGradient,
+              ),
+              const SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT),
+              const SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT),
+              Padding(
+                padding: const EdgeInsets.only(left: 12),
+                child: SingleChatLtRWidget(
+                  showProfileInLeft: true,
+                  showProfile: true,
+                  padding: 0,
+                  textColor: ColorResources.blackColor,
+                  messageText: "Ok",
+                  chatCardGradient: ColorResources.whiteLinearGradient,
+                ),
+              ),
+              const SizedBox(height: Dimensions.PADDING_SIZE_SMALL),
+              Padding(
+                padding: const EdgeInsets.only(left: 12),
+                child: SingleChatLtRWidget(
+                  padding: 0,
+                  textColor: ColorResources.blackColor,
+                  messageText: "Hi , how can i help?",
+                  chatCardGradient: ColorResources.whiteLinearGradient,
+                ),
+              ),
+            ],
+          ),
           Align(
             alignment: Alignment.bottomCenter,
             child: SizedBox(

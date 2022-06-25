@@ -314,11 +314,11 @@ class TabBarDemo extends StatelessWidget {
                             IconButton(
                               onPressed: () {
                                 Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const FilterScreen(),
-                                    ));
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const FilterScreen(),
+                                  ),
+                                );
                               },
                               icon: const Icon(
                                 Icons.filter_list,

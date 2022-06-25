@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:judy_flutter_ui/presentation/screens/device_list.dart';
+import 'package:judy_flutter_ui/presentation/screens/google_maps.dart';
+import 'package:judy_flutter_ui/utill/color_resources.dart';
 import 'package:judy_flutter_ui/utill/dimensions.dart';
 import 'package:judy_flutter_ui/utill/images.dart';
+import 'package:judy_flutter_ui/utill/nav.dart';
 
 class DashboardScreen2 extends StatelessWidget {
   const DashboardScreen2({Key? key}) : super(key: key);
@@ -79,51 +84,70 @@ class DashboardScreen2 extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
-                          width: 150,
-                          height: 150,
-                          padding: const EdgeInsets.all(20),
+                          width: 155,
+                          height: 160,
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(
                               Radius.circular(20),
                             ),
-                            color: Color(0xff388AF7),
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Text(
-                                "Heart rate",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  fontSize: Dimensions.FONT_SIZE_LARGE,
-                                ),
-                              ),
-                              SizedBox(
-                                  height: Dimensions.PADDING_SIZE_EXTRA_SMALL),
-                              Text(
-                                "Continuously",
-                                style: TextStyle(
-                                  color: Color.fromARGB(255, 223, 222, 222),
-                                ),
-                              ),
-                              SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
-                              Icon(
-                                Icons.heart_broken,
-                                size: 40,
-                                color: Colors.white,
-                              )
-                            ],
+                          child: SvgPicture.asset(
+                            Svgs.dialogiconbutton,
+                            fit: BoxFit.fill,
                           ),
                         ),
-                        Container(
-                          width: 150,
-                          height: 150,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(20),
+                        InkWell(
+                          onTap: () {
+                            Nav.push(
+                              context,
+                              const DeviceList(),
+                            );
+                          },
+                          child: Container(
+                            width: 155,
+                            height: 160,
+                            padding: const EdgeInsets.all(20),
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
+                              ),
+                              color: Color(0xff388AF7),
                             ),
-                            color: Color(0xff388AF7),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  "Heart rate",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    fontSize: Dimensions.FONT_SIZE_LARGE,
+                                  ),
+                                ),
+                                const SizedBox(
+                                    height:
+                                        Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                                const Text(
+                                  "Continuously",
+                                  style: TextStyle(
+                                    color: Color.fromARGB(255, 223, 222, 222),
+                                  ),
+                                ),
+                                const SizedBox(
+                                    height: Dimensions.PADDING_SIZE_LARGE),
+                                SizedBox(
+                                  width: 40,
+                                  child: Image.asset(Images.heart),
+                                )
+
+                                // Icon(
+                                //   Icons.heart_broken,
+                                //   size: 40,
+                                //   color: Colors.white,
+                                // )
+                              ],
+                            ),
                           ),
                         ),
                       ],
@@ -133,8 +157,8 @@ class DashboardScreen2 extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
-                          width: 150,
-                          height: 150,
+                          width: 155,
+                          height: 160,
                           padding: const EdgeInsets.all(20),
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(
@@ -143,9 +167,10 @@ class DashboardScreen2 extends StatelessWidget {
                             color: Color(0xff7BDEFB),
                           ),
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Text(
+                            children: [
+                              const Text(
                                 "Time Intervals",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -153,77 +178,83 @@ class DashboardScreen2 extends StatelessWidget {
                                   fontSize: Dimensions.FONT_SIZE_DEFAULT,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                   height: Dimensions.PADDING_SIZE_EXTRA_SMALL),
-                              Text(
+                              const Text(
                                 "1.3 miles",
                                 style: TextStyle(
                                   color: Color.fromARGB(255, 223, 222, 222),
                                 ),
                               ),
-                              SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
-                              Icon(
-                                Icons.more,
-                                size: 40,
-                                color: Colors.white,
+                              const SizedBox(
+                                  height: Dimensions.PADDING_SIZE_LARGE),
+                              SizedBox(
+                                width: 40,
+                                child: Image.asset(Images.timetravel),
                               )
+
+                              // SvgPicture.asset(assetName)
                             ],
                           ),
                         ),
-                        Container(
-                          width: 150,
-                          height: 150,
-                          padding: const EdgeInsets.all(20),
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(20),
+                        GestureDetector(
+                          onTap: () {
+                            Nav.push(
+                              context,
+                              const GoogleMapsScreen(),
+                            );
+                          },
+                          child: Container(
+                            width: 155,
+                            height: 160,
+                            padding: const EdgeInsets.all(20),
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
+                              ),
+                              color: Color(0xff414859),
                             ),
-                            color: Color(0xff414859),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Text(
-                                "My Data",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  fontSize: Dimensions.FONT_SIZE_LARGE,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  "My Data",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    fontSize: Dimensions.FONT_SIZE_LARGE,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                  height: Dimensions.PADDING_SIZE_EXTRA_SMALL),
-                              Text(
-                                "History",
-                                style: TextStyle(
-                                  color: Color.fromARGB(255, 223, 222, 222),
+                                const SizedBox(
+                                    height:
+                                        Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                                const Text(
+                                  "History",
+                                  style: TextStyle(
+                                    color: Color.fromARGB(255, 223, 222, 222),
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: Dimensions.PADDING_SIZE_LARGE),
-                              Icon(
-                                Icons.history,
-                                size: 40,
-                                color: Colors.white,
-                              ),
-                            ],
+                                const SizedBox(
+                                    height: Dimensions.PADDING_SIZE_LARGE),
+                                SizedBox(
+                                  width: 40,
+                                  child: SvgPicture.asset(Svgs.mydata),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ],
                     ),
                     const SizedBox(height: Dimensions.PADDING_SIZE_EXTRA_LARGE),
                     const ListTile(
-                      leading: CircleAvatar(
-                        maxRadius: 10,
-                        backgroundColor: Colors.green,
-                      ),
+                      leading: GreenLeadingRod(),
                       title: Text("Steve has a new speed record"),
                       subtitle: Text("Record speed of 15 ml / h"),
                     ),
                     const ListTile(
-                      leading: CircleAvatar(
-                        maxRadius: 10,
-                        backgroundColor: Colors.green,
-                      ),
+                      leading: GreenLeadingRod(),
                       title: Text("Danila reach the goal at 14"),
                       subtitle: Text("14 mile distance"),
                     ),
@@ -251,6 +282,29 @@ class DashboardScreen2 extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class GreenLeadingRod extends StatelessWidget {
+  const GreenLeadingRod({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          width: 11,
+          height: 5,
+          decoration: BoxDecoration(
+            color: ColorResources.greenColor,
+            borderRadius: BorderRadius.circular(2.5),
+          ),
+        ),
+      ],
     );
   }
 }

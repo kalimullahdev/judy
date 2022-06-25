@@ -76,7 +76,16 @@ class MessangerScreen extends StatelessWidget {
                 Icons.arrow_forward_ios,
                 color: ColorResources.blueColor,
               ),
-              title: const Text("Your message here"),
+              // Your message here
+              title: TextFormField(
+                cursorColor: ColorResources.blackColor,
+                decoration: const InputDecoration(
+                    hintText: "Your message here",
+                    border: InputBorder.none,
+                    hintStyle: TextStyle(
+                      color: ColorResources.greyColor,
+                    )),
+              ),
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -109,35 +118,55 @@ class SingleChatLtRWidget extends StatelessWidget {
   final String messageText;
   final String? profileSrc;
   bool showOnRight;
-
+  final Color? backgroundColor;
+  final Color? textColor;
+  final LinearGradient? chatCardGradient;
+  final double? padding;
+  final bool showProfile;
+  final bool showProfileInLeft;
   SingleChatLtRWidget({
     Key? key,
     required this.messageText,
     this.profileSrc,
     this.showOnRight = false,
+    this.backgroundColor,
+    this.chatCardGradient,
+    this.textColor,
+    this.padding,
+    this.showProfile = false,
+    this.showProfileInLeft = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(padding ?? 8.0),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          profileSrc != null
-              ? const CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      "https://d2qp0siotla746.cloudfront.net/img/use-cases/profile-picture/template_3.jpg"),
-                  backgroundColor: ColorResources.blueColor,
-                  maxRadius: 15,
-                )
+          showProfile && showProfileInLeft
+              ? profileSrc != null
+                  ? CircleAvatar(
+                      backgroundImage: const NetworkImage(
+                          "https://d2qp0siotla746.cloudfront.net/img/use-cases/profile-picture/template_3.jpg"),
+                      backgroundColor:
+                          backgroundColor ?? ColorResources.blueColor,
+                      maxRadius: 15,
+                    )
+                  : const Padding(
+                      padding: EdgeInsets.only(right: 8),
+                      child: CircleAvatar(
+                        radius: 12,
+                        backgroundColor: ColorResources.whiteColor,
+                      ),
+                    )
               : const SizedBox(
                   width: 30,
                 ),
-          const SizedBox(
-            width: Dimensions.PADDING_SIZE_SMALL,
+          SizedBox(
+            width: padding ?? Dimensions.PADDING_SIZE_SMALL,
           ),
           Container(
             padding: const EdgeInsets.all(12),
@@ -145,24 +174,44 @@ class SingleChatLtRWidget extends StatelessWidget {
               minWidth: 10,
               maxWidth: Dimensions.getScreenSize(context).width * 0.65,
             ),
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Color(0xffF16487),
-                  Color(0xffFC8889),
-                ],
-              ),
-              borderRadius: BorderRadius.all(
+            decoration: BoxDecoration(
+              gradient: chatCardGradient ??
+                  const LinearGradient(
+                    colors: [
+                      Color(0xffF16487),
+                      Color(0xffFC8889),
+                    ],
+                  ),
+              borderRadius: const BorderRadius.all(
                 Radius.circular(12),
               ),
             ),
             child: Text(
               messageText,
-              style: const TextStyle(
-                color: Colors.white,
+              style: TextStyle(
+                color: textColor ?? Colors.white,
               ),
             ),
           ),
+          showProfile && !showProfileInLeft
+              ? profileSrc != null
+                  ? CircleAvatar(
+                      backgroundImage: const NetworkImage(
+                          "https://d2qp0siotla746.cloudfront.net/img/use-cases/profile-picture/template_3.jpg"),
+                      backgroundColor:
+                          backgroundColor ?? ColorResources.blueColor,
+                      maxRadius: 15,
+                    )
+                  : const Padding(
+                      padding: EdgeInsets.only(left: 8),
+                      child: CircleAvatar(
+                        radius: 12,
+                        backgroundColor: ColorResources.whiteColor,
+                      ),
+                    )
+              : const SizedBox(
+                  width: 30,
+                ),
         ],
       ),
     );
@@ -172,9 +221,9 @@ class SingleChatLtRWidget extends StatelessWidget {
 class SingleChatRtLWidget extends StatelessWidget {
   final String messageText;
   final String? profileSrc;
-  bool showOnRight;
+  final bool showOnRight;
 
-  SingleChatRtLWidget({
+  const SingleChatRtLWidget({
     Key? key,
     required this.messageText,
     this.profileSrc,

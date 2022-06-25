@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:judy_flutter_ui/utill/dimensions.dart';
+import 'package:judy_flutter_ui/utill/styles.dart';
 
-class DeviceList extends StatelessWidget {
+class DeviceList extends StatefulWidget {
   const DeviceList({Key? key}) : super(key: key);
+
+  @override
+  State<DeviceList> createState() => _DeviceListState();
+}
+
+class _DeviceListState extends State<DeviceList> {
+  bool airConditionerToggle = false;
+  bool microwaveToggle = false;
+  bool vacumCleanerToggle = true;
+  bool waterPurifierToggle = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,10 +40,10 @@ class DeviceList extends StatelessWidget {
       ),
       body: Center(
         child: Container(
-          height: Dimensions.getScreenSize(context).height,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
+            boxShadow: Styles.boxShadow,
             color: Colors.white,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(50),
               topRight: Radius.circular(50),
             ),
@@ -101,8 +113,16 @@ class DeviceList extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Card(
+                child: Container(
+                  decoration: Styles.boxDecorationWithShadow,
                   child: ListTile(
+                    onTap: (() {
+                      setState(
+                        () {
+                          airConditionerToggle = !airConditionerToggle;
+                        },
+                      );
+                    }),
                     title: const Text("Air Conditioner"),
                     subtitle: Row(
                       children: const [
@@ -121,18 +141,32 @@ class DeviceList extends StatelessWidget {
                         ),
                       ],
                     ),
-                    trailing: const Icon(
-                      Icons.toggle_on,
-                      size: 40,
-                      color: Colors.black,
-                    ),
+                    trailing: airConditionerToggle
+                        ? const Icon(
+                            Icons.toggle_on,
+                            size: 40,
+                            color: Colors.black,
+                          )
+                        : const Icon(
+                            Icons.toggle_off,
+                            size: 40,
+                            // color: Colors.black,
+                          ),
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Card(
+                child: Container(
+                  decoration: Styles.boxDecorationWithShadow,
                   child: ListTile(
+                    onTap: () {
+                      setState(
+                        () {
+                          microwaveToggle = !microwaveToggle;
+                        },
+                      );
+                    },
                     title: const Text("Microwave"),
                     subtitle: Row(
                       children: const [
@@ -151,18 +185,32 @@ class DeviceList extends StatelessWidget {
                         ),
                       ],
                     ),
-                    trailing: const Icon(
-                      Icons.toggle_on,
-                      size: 40,
-                      color: Colors.black,
-                    ),
+                    trailing: microwaveToggle
+                        ? const Icon(
+                            Icons.toggle_on,
+                            size: 40,
+                            color: Colors.black,
+                          )
+                        : const Icon(
+                            Icons.toggle_off,
+                            size: 40,
+                            // color: Colors.black,
+                          ),
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Card(
+                child: Container(
+                  decoration: Styles.boxDecorationWithShadow,
                   child: ListTile(
+                    onTap: () {
+                      setState(
+                        () {
+                          vacumCleanerToggle = !vacumCleanerToggle;
+                        },
+                      );
+                    },
                     title: const Text("Vacuum Cleaner"),
                     subtitle: Row(
                       children: const [
@@ -181,18 +229,30 @@ class DeviceList extends StatelessWidget {
                         ),
                       ],
                     ),
-                    trailing: const Icon(
-                      Icons.toggle_off,
-                      size: 40,
-                      // color: Colors.black,
-                    ),
+                    trailing: vacumCleanerToggle
+                        ? const Icon(
+                            Icons.toggle_on,
+                            size: 40,
+                            color: Colors.black,
+                          )
+                        : const Icon(
+                            Icons.toggle_off,
+                            size: 40,
+                            // color: Colors.black,
+                          ),
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Card(
+                child: Container(
+                  decoration: Styles.boxDecorationWithShadow,
                   child: ListTile(
+                    onTap: () {
+                      setState(() {
+                        waterPurifierToggle = !waterPurifierToggle;
+                      });
+                    },
                     title: const Text("Water Purifier"),
                     subtitle: Row(
                       children: const [
@@ -211,11 +271,17 @@ class DeviceList extends StatelessWidget {
                         ),
                       ],
                     ),
-                    trailing: const Icon(
-                      Icons.toggle_on,
-                      size: 40,
-                      color: Colors.black,
-                    ),
+                    trailing: waterPurifierToggle
+                        ? const Icon(
+                            Icons.toggle_on,
+                            size: 40,
+                            color: Colors.black,
+                          )
+                        : const Icon(
+                            Icons.toggle_off,
+                            size: 40,
+                            // color: Colors.black,
+                          ),
                   ),
                 ),
               ),

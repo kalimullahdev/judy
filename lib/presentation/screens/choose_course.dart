@@ -79,15 +79,16 @@ class _ChooseCourseState extends State<ChooseCourse> {
                     children: courseTypesList
                         .map(
                           (courseType) => ListTile(
+                            onTap: () {
+                              setState(() {
+                                currentCourseType = courseType;
+                              });
+                            },
                             leading: Radio(
                               activeColor: Colors.green,
                               value: courseType,
                               groupValue: currentCourseType,
-                              onChanged: (value) {
-                                setState(() {
-                                  currentCourseType = courseType;
-                                });
-                              },
+                              onChanged: (value) {},
                             ),
                             title: Text(courseType),
                           ),

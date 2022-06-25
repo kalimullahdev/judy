@@ -2,8 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:judy_flutter_ui/utill/color_resources.dart';
 import 'package:judy_flutter_ui/utill/dimensions.dart';
 
-class SearchScreen extends StatelessWidget {
+class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SearchScreen> createState() => _SearchScreenState();
+}
+
+class _SearchScreenState extends State<SearchScreen> {
+  final TextEditingController _searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,9 +52,18 @@ class SearchScreen extends StatelessWidget {
                 leading: const Icon(
                   Icons.location_searching_rounded,
                 ),
-                title: const Text("Top"),
+                title: TextFormField(
+                  controller: _searchController,
+                  cursorColor: ColorResources.blackColor,
+                  decoration: const InputDecoration(
+                    hintText: "Search",
+                    border: InputBorder.none,
+                  ),
+                ),
                 trailing: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _searchController.clear();
+                    },
                     icon: const Icon(
                       Icons.clear,
                     )),
