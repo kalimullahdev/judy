@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:judy_flutter_ui/utill/dimensions.dart';
 import 'package:judy_flutter_ui/utill/images.dart';
 
@@ -43,146 +44,150 @@ class DashboardScreen extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: ListView(
+        child: Padding(
           padding: const EdgeInsets.all(20),
-          children: [
-            Row(
-              children: const [
-                Text(
-                  '12,253 ',
-                  style: TextStyle(
-                    fontSize: Dimensions.FONT_SIZE_OVER_TOO_LARGE,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  "steps",
-                  style: TextStyle(
-                    color: Color(0xffB4B4B4),
-                  ),
-                )
-              ],
-            ),
-            const SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT),
-            RichText(
-              text: const TextSpan(
-                style: TextStyle(
-                  fontSize: Dimensions.FONT_SIZE_LARGE,
-                  color: Colors.black,
-                ),
-                children: <TextSpan>[
-                  TextSpan(text: 'Completed '),
-                  TextSpan(
-                    text: 'today',
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                children: const [
+                  Text(
+                    '12,253 ',
                     style: TextStyle(
+                      fontSize: Dimensions.FONT_SIZE_OVER_TOO_LARGE,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xff388AF7),
                     ),
+                  ),
+                  Text(
+                    "steps",
+                    style: TextStyle(
+                      color: Color(0xffB4B4B4),
+                    ),
+                  )
+                ],
+              ),
+              const SizedBox(height: Dimensions.PADDING_SIZE_DEFAULT),
+              RichText(
+                text: const TextSpan(
+                  style: TextStyle(
+                    fontSize: Dimensions.FONT_SIZE_LARGE,
+                    color: Colors.black,
+                  ),
+                  children: <TextSpan>[
+                    TextSpan(text: 'Completed '),
+                    TextSpan(
+                      text: 'today',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xff388AF7),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: Dimensions.PADDING_SIZE_EXTRA_LARGE),
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        width: 50,
+                        height: 50,
+                        decoration: const BoxDecoration(
+                          color: Color(0xff388AF7),
+                          borderRadius: BorderRadius.all(Radius.circular(12)),
+                        ),
+                        child: const Icon(
+                          Icons.social_distance,
+                          color: Colors.white,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: Dimensions.PADDING_SIZE_DEFAULT,
+                      ),
+                      const Text(
+                        "Distance",
+                        style: TextStyle(
+                          fontSize: Dimensions.FONT_SIZE_EXTRA_LARGE,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: const [
+                      SizedBox(
+                        width: 80,
+                      ),
+                      Text(
+                        "3.48 ml",
+                        style: TextStyle(
+                          fontSize: Dimensions.FONT_SIZE_EXTRA_LARGE,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Icon(Icons.more_vert),
+                        ),
+                      )
+                    ],
                   ),
                 ],
               ),
-            ),
-            const SizedBox(height: Dimensions.PADDING_SIZE_EXTRA_LARGE),
-            Column(
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      width: 50,
-                      height: 50,
-                      decoration: const BoxDecoration(
-                        color: Color(0xff388AF7),
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
+              const SizedBox(height: Dimensions.PADDING_SIZE_EXTRA_LARGE),
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        width: 50,
+                        height: 50,
+                        decoration: const BoxDecoration(
+                          color: Color(0xff7BDEFB),
+                          borderRadius: BorderRadius.all(Radius.circular(12)),
+                        ),
+                        child: const Icon(
+                          Icons.access_alarm_outlined,
+                          color: Colors.white,
+                        ),
                       ),
-                      child: const Icon(
-                        Icons.social_distance,
-                        color: Colors.white,
+                      const SizedBox(
+                        width: Dimensions.PADDING_SIZE_DEFAULT,
                       ),
-                    ),
-                    const SizedBox(
-                      width: Dimensions.PADDING_SIZE_DEFAULT,
-                    ),
-                    const Text(
-                      "Distance",
-                      style: TextStyle(
-                        fontSize: Dimensions.FONT_SIZE_EXTRA_LARGE,
+                      const Text(
+                        "Distance",
+                        style: TextStyle(
+                          fontSize: Dimensions.FONT_SIZE_EXTRA_LARGE,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: const [
-                    SizedBox(
-                      width: 80,
-                    ),
-                    Text(
-                      "3.48 ml",
-                      style: TextStyle(
-                        fontSize: Dimensions.FONT_SIZE_EXTRA_LARGE,
-                        fontWeight: FontWeight.bold,
+                    ],
+                  ),
+                  Row(
+                    children: const [
+                      SizedBox(
+                        width: 80,
                       ),
-                    ),
-                    Expanded(
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: Icon(Icons.more_vert),
+                      Text(
+                        "3.48 ml",
+                        style: TextStyle(
+                          fontSize: Dimensions.FONT_SIZE_EXTRA_LARGE,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    )
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(height: Dimensions.PADDING_SIZE_EXTRA_LARGE),
-            Column(
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      width: 50,
-                      height: 50,
-                      decoration: const BoxDecoration(
-                        color: Color(0xff7BDEFB),
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
-                      ),
-                      child: const Icon(
-                        Icons.access_alarm_outlined,
-                        color: Colors.white,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: Dimensions.PADDING_SIZE_DEFAULT,
-                    ),
-                    const Text(
-                      "Distance",
-                      style: TextStyle(
-                        fontSize: Dimensions.FONT_SIZE_EXTRA_LARGE,
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: const [
-                    SizedBox(
-                      width: 80,
-                    ),
-                    Text(
-                      "3.48 ml",
-                      style: TextStyle(
-                        fontSize: Dimensions.FONT_SIZE_EXTRA_LARGE,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Expanded(
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: Icon(Icons.more_vert),
-                      ),
-                    )
-                  ],
-                ),
-              ],
-            ),
-          ],
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.centerRight,
+                          child: Icon(Icons.more_vert),
+                        ),
+                      )
+                    ],
+                  ),
+                  SvgPicture.asset(Svgs.dashboardScreenImage),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

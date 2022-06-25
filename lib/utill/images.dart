@@ -14,7 +14,8 @@ class Images {
 class Svgs {
   // static const String dialogicon1 = 'assets/svg/dialogicon1.svg';
   // static const String dialogicon1 = 'assets/svg/dialogicon1.svg';
-  // static const String dialogicon1 = 'assets/svg/dialogicon1.svg';
+  static const String dashboardScreenImage =
+      'assets/svg/dashboard_screen_image.svg';
   static const String mydata = 'assets/svg/mydata.svg';
   static const String dialogicon1 = 'assets/svg/dialogicon1.svg';
   static const String dialogicon2 = 'assets/svg/dialogicon2.svg';

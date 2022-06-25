@@ -52,11 +52,13 @@ class _DeviceListState extends State<DeviceList> {
             padding: const EdgeInsets.all(Dimensions.PADDING_SIZE_EXTRA_LARGE),
             children: [
               // List devices (4)
-              const Text(
-                "New Device",
-                style: TextStyle(
-                  color: Color(0xff6F6798),
-                  fontWeight: FontWeight.w600,
+              const Center(
+                child: Text(
+                  "New Device",
+                  style: TextStyle(
+                    color: Color(0xff6F6798),
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
               const SizedBox(

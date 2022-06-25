@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:judy_flutter_ui/presentation/screens/dashboard_screen.dart';
 import 'package:judy_flutter_ui/presentation/screens/device_list.dart';
 import 'package:judy_flutter_ui/presentation/screens/google_maps.dart';
 import 'package:judy_flutter_ui/utill/color_resources.dart';
@@ -156,45 +157,51 @@ class DashboardScreen2 extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Container(
-                          width: 155,
-                          height: 160,
-                          padding: const EdgeInsets.all(20),
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(20),
+                        InkWell(
+                          onTap: () {
+                            Nav.push(context, const DashboardScreen());
+                          },
+                          child: Container(
+                            width: 155,
+                            height: 160,
+                            padding: const EdgeInsets.all(20),
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
+                              ),
+                              color: Color(0xff7BDEFB),
                             ),
-                            color: Color(0xff7BDEFB),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                "Time Intervals",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                  fontSize: Dimensions.FONT_SIZE_DEFAULT,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  "Time Intervals",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                    fontSize: Dimensions.FONT_SIZE_DEFAULT,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(
-                                  height: Dimensions.PADDING_SIZE_EXTRA_SMALL),
-                              const Text(
-                                "1.3 miles",
-                                style: TextStyle(
-                                  color: Color.fromARGB(255, 223, 222, 222),
+                                const SizedBox(
+                                    height:
+                                        Dimensions.PADDING_SIZE_EXTRA_SMALL),
+                                const Text(
+                                  "1.3 miles",
+                                  style: TextStyle(
+                                    color: Color.fromARGB(255, 223, 222, 222),
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(
-                                  height: Dimensions.PADDING_SIZE_LARGE),
-                              SizedBox(
-                                width: 40,
-                                child: Image.asset(Images.timetravel),
-                              )
+                                const SizedBox(
+                                    height: Dimensions.PADDING_SIZE_LARGE),
+                                SizedBox(
+                                  width: 40,
+                                  child: Image.asset(Images.timetravel),
+                                )
 
-                              // SvgPicture.asset(assetName)
-                            ],
+                                // SvgPicture.asset(assetName)
+                              ],
+                            ),
                           ),
                         ),
                         GestureDetector(
